@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Salary Analysis</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('action')}}"method="post">
+    	<input type="text" name="Year" placeholder="Year" required="required" />
+        <input type="text" name="Present_Price" placeholder="Present_Price" required="required" />
+		<input type="text" name="Kms_Driven" placeholder="Kms_Driven" required="required" />
+		<select type="text" name="Owner" placeholder="Owner" required="required" />
+			<option value=0>1st hand</option>
+            <option value=1>2nd hand</option>
+            <option value=3>3rd hand</option>
+        </select>
+		<select type="text" name="Fuel_Type" placeholder="Fuel_Type" required="required" >
+			<option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Diesel">CNG</option>
+        </select>
+		<select  type="text" name="Seller_Type_Individual" placeholder="Seller_Type_Individual" required="required">
+			<option value="Dealer">Dealer</option>
+            <option value="Individual">Individual</option>
+        </select>
+
+		<select name="Transmission_Mannual" required="required">
+                <option value="Mannual">Manual Car</option>
+                <option value="Automatic">Automatic Car</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {% if prediction_test %}
+   <h2>Expected Selling Price: <i> {{prediction_test}}</i></h2>
+   {% endif %}
+
+ </div>
+
+
+</body>
+</html>
